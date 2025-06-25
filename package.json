@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "pg": "^8.16.2"
+  },
+  "scripts": {
+    "start": "node db/populatedb.js",
+    "server": "node --watch app.js"
+  }
+}
