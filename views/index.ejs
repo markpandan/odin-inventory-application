@@ -10,7 +10,7 @@
     <%- include('components/navbar') %>
 
     <% if (page == 'home') { %>
-        <%- include('pages/Home') %>
+        <%- include('pages/Home', {animes: animes}) %>
     <% } else if (page == 'login') { %>
         <%- include('pages/Login') %>
     <% } else if (page == 'admin') { %>

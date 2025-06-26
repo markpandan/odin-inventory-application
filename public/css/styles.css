@@ -27,6 +27,23 @@ button[type="submit"] {
   font-size: large;
 }
 
+input,
+textarea {
+  border-radius: 16px;
+  border: 1px solid gray;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 3px;
+  padding: 0.5rem 1rem;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
 nav > a {
   color: white;
   font-weight: bold;
@@ -75,6 +92,32 @@ a {
   flex: 1 0 35rem;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.card-caption {
+  background-color: rgba(0, 0, 0, 0.25);
+  min-height: 5rem;
+  text-align: start;
+  padding: 0.5rem 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 16px;
+}
+
+.card-tags {
+  flex: 1 0 100%;
+}
+
+.card-title {
+  font-size: medium;
 }
 
 .login-title {
@@ -95,10 +138,41 @@ a {
 }
 
 .login-form input {
-  border-radius: 16px;
-  border: 1px solid gray;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 3px;
-  padding: 0.3rem 0;
   width: min(30rem, 100%);
   text-align: center;
+}
+
+.admin-title {
+  margin-top: 16px;
+}
+
+.admin-form {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.admin-form > div > * {
+  display: block;
+  text-align: start;
+}
+
+.admin-form input {
+  width: 100%;
+}
+
+.anime-input-container {
+  flex-grow: 3;
+}
+
+/* .rating-input-container {
+} */
+
+.description-input-container {
+  flex-basis: 100%;
+}
+
+.genre-input-container {
+  flex-basis: 100%;
 }

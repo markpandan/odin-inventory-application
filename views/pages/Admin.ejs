@@ -1,3 +1,22 @@
 <div class="container">
-    <h2>Admin Dashboard</h2>
+    <h2 class="admin-title">Admin Dashboard</h2>
+    <form action="/admin" method="post" class="admin-form">
+        <div class="anime-input-container">
+            <label for="anime-name">Anime Name</label>
+            <input type="text" name="anime-name" id="anime-name">
+        </div>
+        <div class="rating-input-container">
+            <label for="rating">Rating</label>
+            <input type="text" name="rating" id="rating">
+        </div>
+        <div class="description-input-container">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" rows="4"></textarea>
+        </div>
+        <div class="genre-input-container">
+            <label for="genres">Genres (i.e: Action,Horror,Adventure)</label>
+            <textarea name="" id=""></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
 </div>

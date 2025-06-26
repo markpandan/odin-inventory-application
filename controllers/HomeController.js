@@ -1,5 +1,9 @@
+const db = require("../db/queries");
+
 module.exports = {
-  get: (req, res) => {
-    res.render("index", { page: "home" });
+  get: async (req, res) => {
+    const animes = await db.getAllAnimes();
+    res.render("index", { page: "home", animes: animes });
   },
+  post: async (req, res) => {},
 };

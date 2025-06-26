@@ -1,13 +1,12 @@
 <div class="container home-container">
-    <input type="text" name="search-anime" id="search-anime" placeholder="Search animes">
+    <form action="/" method="post">    
+        <input type="text" name="search-anime" id="search-anime" placeholder="Search animes">
+        <button type="submit">Search</button>
+    </form>
+
     <div class="anime-list">
-        <div class="card-container"></div>
-        <div class="card-container"></div>
-        <div class="card-container"></div>
-        <div class="card-container"></div>
-        <div class="card-container"></div>
-        <div class="card-container"></div>
-        <div class="card-container"></div>
-        <div class="card-container"></div>
+        <% animes.forEach((value) => { %>
+            <%- include("../components/card", {value: value}) %>
+        <% }); %>
     </div>
 </div>
