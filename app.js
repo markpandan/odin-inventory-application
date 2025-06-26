@@ -12,6 +12,12 @@ app.use(express.urlencoded({ extended: true }));
 const homeRoute = require("./routes/HomeRoute");
 app.use("/", homeRoute);
 
+const loginRoute = require("./routes/LoginRoute");
+app.use("/login", loginRoute);
+
+const adminRoute = require("./routes/AdminRoute");
+app.use("/admin", adminRoute);
+
 const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}!`);

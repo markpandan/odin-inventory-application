@@ -17,9 +17,20 @@ nav {
   align-items: end;
 }
 
+button[type="submit"] {
+  background-color: darkseagreen;
+  border: 1px solid grey;
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 3px;
+  font-size: large;
+}
+
 nav > a {
   color: white;
   font-weight: bold;
+  text-decoration: none;
 }
 
 a {
@@ -29,6 +40,7 @@ a {
 .container {
   max-width: 1140px;
   margin: auto;
+  text-align: center;
 }
 
 .home-container {
@@ -63,4 +75,30 @@ a {
   flex: 1 0 35rem;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.login-title {
+  margin-top: 2rem;
+}
+
+.login-container {
+  background-color: antiquewhite;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 16px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form input {
+  border-radius: 16px;
+  border: 1px solid gray;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 3px;
+  padding: 0.3rem 0;
+  width: min(30rem, 100%);
+  text-align: center;
 }

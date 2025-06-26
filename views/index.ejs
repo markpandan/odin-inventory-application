@@ -8,6 +8,13 @@
 </head>
 <body>
     <%- include('components/navbar') %>
-    <%- include('pages/Home') %>
+
+    <% if (page == 'home') { %>
+        <%- include('pages/Home') %>
+    <% } else if (page == 'login') { %>
+        <%- include('pages/Login') %>
+    <% } else if (page == 'admin') { %>
+        <%- include('pages/Admin') %>
+    <% } %>    
 </body>
 </html>
