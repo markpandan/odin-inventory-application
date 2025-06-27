@@ -1,0 +1,21 @@
+<div class="container anime-container">
+    <div class="image-container"></div>
+    <div class="anime-details">
+        <div class="anime-header">
+            <h1><%= anime.name %></h1>
+            <h3><%= anime.rating %></h3>
+        </div>
+        <hr>
+        <div class="anime-genres">
+            <% anime.genres.forEach((value) => { %>
+                <p><%= value %></p>
+            <% }) %>
+        </div>
+        <p class="anime-description"><%= anime.description %></p>
+
+        <% if ( isAuthenticated ) { %>
+            <div class="anime-commands"><button>Update</button> <button>Delete</button></div>
+        <% } %>
+    </div>
+
+</div>

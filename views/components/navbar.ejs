@@ -2,5 +2,14 @@
     <a href="/">
         <h1>Anime Checklist</h1>
     </a>
-    <a href="/login">Admin</a>
+    <% if (isAuthenticated) { %>
+        <div class="nav-items">        
+            <a href="/admin">Create New</a> 
+            <a href="/logout">Logout</a>
+        </div>
+
+    <%} else { %> 
+        <div class="nav-items"><a href="/login">Admin</a></div>
+    <% } %>
+
 </nav>

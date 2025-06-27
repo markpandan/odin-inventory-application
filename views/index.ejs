@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Checklist</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="/scripts/script.js" type="module" defer></script>
 </head>
 <body>
-    <%- include('components/navbar') %>
+    <%- include('components/navbar', {isAuthenticated}) %>
 
     <% if (page == 'home') { %>
-        <%- include('pages/Home', {animes: animes}) %>
+        <%- include('pages/Home', {animes}) %>
     <% } else if (page == 'login') { %>
         <%- include('pages/Login') %>
     <% } else if (page == 'admin') { %>
         <%- include('pages/Admin') %>
-    <% } %>    
+    <% } else if (page == 'anime') { %>
+        <%- include('pages/AnimePage', {anime, isAuthenticated}) %>
+    <% } %>     
 </body>
 </html>

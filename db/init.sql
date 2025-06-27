@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS animes_to_genres (
     CONSTRAINT fk_anime
         FOREIGN KEY(anime_id)
         REFERENCES animes(id)
-        ON DELETE SET NULL,
+        ON DELETE CASCADE,
     CONSTRAINT fk_genre
         FOREIGN KEY(genre_id)
         REFERENCES genres(id)
