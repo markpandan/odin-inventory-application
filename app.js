@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const path = require("node:path");
 
+const db = require(path.join(__dirname, "db/queries"));
+
 app.locals.isAuthenticated = false;
 
 app.set("views", path.join(__dirname, "views"));
@@ -23,8 +25,13 @@ app.use("/admin", adminRoute);
 const animePageRoute = require("./routes/AnimePageRoute");
 app.use("/anime", animePageRoute);
 
-app.use("/logout", (req, res) => {
+app.get("/logout", (req, res) => {
   req.app.locals.isAuthenticated = false;
+  res.redirect("/");
+});
+
+app.get("/delete", async (req, res) => {
+  db.deleteAnime(req.query.id);
   res.redirect("/");
 });
 

@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS animes (
 
 CREATE TABLE IF NOT EXISTS genres (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR ( 255 ) NOT NULL
+    name VARCHAR ( 255 ) NOT NULL,
+    UNIQUE(name)
 );
 
 CREATE TABLE IF NOT EXISTS animes_to_genres (
@@ -22,7 +23,8 @@ CREATE TABLE IF NOT EXISTS animes_to_genres (
     CONSTRAINT fk_genre
         FOREIGN KEY(genre_id)
         REFERENCES genres(id)
-        ON DELETE SET NULL
+        ON DELETE CASCADE,
+    UNIQUE (anime_id, genre_id)
 );
 
 -- Data was based on https://myanimelist.net
@@ -44,12 +46,13 @@ INSERT INTO genres (name) VALUES
 ('Sci-Fi'),
 ('Boys Love'),
 ('Gourmet'),
-('Slice of Life');
+('Slice of Life') ON CONFLICT DO NOTHING;
 
 INSERT INTO animes (name, rating, description) VALUES 
 ('Shingeki no Kyojin', 8.56, 'Lorem Ipsum'),
 ('One Piece', 8.73, 'Lorem Ipsum'),
-('Mob Psycho 100', 8.49, 'Lorem Ipsum');
+('Mob Psycho 100', 8.49, 'Lorem Ipsum'),
+('Sousou no Frieren', 9.30, 'Lorem Ipsum');
 
 INSERT INTO animes_to_genres VALUES 
 (1, 1),
@@ -61,7 +64,10 @@ INSERT INTO animes_to_genres VALUES
 (2, 10),
 (3, 1),
 (3, 2),
-(3, 8);
+(3, 8),
+(4, 5),
+(4, 6),
+(4, 10) ON CONFLICT DO NOTHING;
 
 
 

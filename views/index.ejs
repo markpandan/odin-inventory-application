@@ -15,7 +15,7 @@
     <% } else if (page == 'login') { %>
         <%- include('pages/Login') %>
     <% } else if (page == 'admin') { %>
-        <%- include('pages/Admin') %>
+        <%- include('pages/Admin', {anime: anime || ""}) %>
     <% } else if (page == 'anime') { %>
         <%- include('pages/AnimePage', {anime, isAuthenticated}) %>
     <% } %>     

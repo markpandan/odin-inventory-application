@@ -61,10 +61,47 @@ async function insertAnime({ name, rating, description, genres }) {
   await pool.query(`INSERT INTO animes_to_genres VALUES ${valuesToInsert}`);
 }
 
+async function updateAnime({
+  id,
+  name,
+  rating,
+  description,
+  imageURL,
+  genres,
+}) {
+  await pool.query(
+    `UPDATE animes SET name = $2, rating = $3, description = $4, imageURL = $5
+    WHERE id = $1`,
+    [id, name, rating, description, imageURL]
+  );
+
+  const genreIds = await pool.query(
+    "SELECT id FROM genres WHERE name = ANY($1)",
+    [[genres]]
+  );
+
+  let valuesToInsert = [];
+  genreIds.rows.forEach((value) => {
+    valuesToInsert.push(`( ${id}, ${value.id} )`);
+  });
+  valuesToInsert = valuesToInsert.join(",");
+
+  await pool.query(`DELETE FROM animes_to_genres WHERE anime_id = $1`, [id]);
+  await pool.query(
+    `INSERT INTO animes_to_genres VALUES ${valuesToInsert} ON CONFLICT DO NOTHING`
+  );
+}
+
+async function deleteAnime(id) {
+  await pool.query("DELETE FROM animes WHERE id = $1", [id]);
+}
+
 module.exports = {
   getAllAnimes,
   getAnimeById,
-  searchAnime,
   getGenres,
+  searchAnime,
   insertAnime,
+  updateAnime,
+  deleteAnime,
 };

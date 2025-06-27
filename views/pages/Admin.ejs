@@ -1,21 +1,25 @@
 <div class="container">
     <h2 class="admin-title">Create New</h2>
-    <form action="/admin" method="post" class="admin-form">
+    <form action="/admin/<%= anime ? `update/${anime.id}` : 'new' %>" method="post" class="admin-form">
         <div class="anime-input-container">
             <label for="anime-name">Anime Name</label>
-            <input type="text" name="anime-name" id="anime-name">
+            <input type="text" name="anime-name" id="anime-name"
+                value="<%= anime ? anime.name : '' %>" required>
         </div>
         <div class="rating-input-container">
             <label for="rating">Rating</label>
-            <input type="text" name="rating" id="rating">
+            <input type="text" name="rating" id="rating"
+                value="<%= anime ? anime.rating : '' %>" required>
         </div>
         <div class="description-input-container">
             <label for="description">Description</label>
-            <textarea name="description" id="description" rows="4"></textarea>
+            <textarea name="description" id="description" rows="10" required><%= anime ? anime.description : '' %>
+            </textarea>
         </div>
         <div class="genre-input-container">
             <label for="genres">Genres (i.e: Action,Horror,Adventure)</label>
-            <textarea name="genres" id="genres"></textarea>
+            <textarea name="genres" id="genres" required><%= anime ? anime.genres : '' %>
+            </textarea>
         </div>
         <button type="submit">Submit</button>
     </form>

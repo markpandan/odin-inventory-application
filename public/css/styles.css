@@ -41,7 +41,7 @@ textarea {
 
 textarea {
   width: 100%;
-  resize: none;
+  resize: vertical;
 }
 
 label {
