@@ -21,16 +21,9 @@ async function getAnimeById(id) {
   return rows[0];
 }
 
-async function searchAnime(anime) {
-  const { rows } = await pool.query("SELECT * FROM animes WHERE name LIKE $1", [
-    `%${anime}%`,
-  ]);
-  return rows;
-}
-
 async function getGenres(animeId) {
   let query;
-  if (!id) {
+  if (!animeId) {
     query = await pool.query("SELECT * FROM genres");
   } else {
     query = await pool.query("SELECT * FROM genres WHERE anime_id = $1", [
@@ -39,6 +32,30 @@ async function getGenres(animeId) {
   }
 
   return query.rows;
+}
+
+async function searchAnime(animeName, genreId) {
+  let conditions = [];
+  let queryConfig = [];
+
+  if (animeName) {
+    conditions.push("animes.name LIKE $1");
+    queryConfig.push(`%${animeName}%`);
+  }
+  if (genreId) {
+    conditions.push(`atg.genre_id = ${genreId}`);
+  }
+  conditions = conditions.join(" AND ");
+
+  const { rows } = await pool.query(
+    `SELECT animes.id, animes.name, animes.rating, animes.description, animes.imageURL, ARRAY_AGG(genres.name) AS genres FROM animes 
+    INNER JOIN animes_to_genres AS atg ON atg.anime_id = animes.id 
+    INNER JOIN genres ON genres.id = atg.genre_id 
+    WHERE ${conditions}
+    GROUP BY animes.id, animes.name`,
+    queryConfig
+  );
+  return rows;
 }
 
 async function insertAnime({ name, rating, description, genres }) {

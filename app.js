@@ -31,7 +31,7 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/delete", async (req, res) => {
-  db.deleteAnime(req.query.id);
+  await db.deleteAnime(req.query.id);
   res.redirect("/");
 });
 

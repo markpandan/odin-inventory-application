@@ -1,6 +1,12 @@
 <div class="container home-container">
-    <form action="/" method="post">    
-        <input type="text" name="search-anime" id="search-anime" placeholder="Search animes">
+    <form action="/" method="get" class="home-form">    
+        <input type="text" name="s" placeholder="Search animes" required>
+        <select name="id">
+            <option value="0" selected disabled>Search by Genres</option>
+            <% genres.forEach((value) => { %>
+                <option value="<%= value.id %>"><%= value.name %></option>
+            <% }); %>
+        </select>
         <button type="submit">Search</button>
     </form>
 

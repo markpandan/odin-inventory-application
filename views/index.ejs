@@ -11,7 +11,7 @@
     <%- include('components/navbar', {isAuthenticated}) %>
 
     <% if (page == 'home') { %>
-        <%- include('pages/Home', {animes}) %>
+        <%- include('pages/Home', {animes, genres}) %>
     <% } else if (page == 'login') { %>
         <%- include('pages/Login') %>
     <% } else if (page == 'admin') { %>

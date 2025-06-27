@@ -32,11 +32,13 @@ button[type="submit"] {
 }
 
 input,
-textarea {
+textarea,
+select {
   border-radius: 16px;
   border: 1px solid gray;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 3px;
   padding: 0.5rem 1rem;
+  background-color: white;
 }
 
 textarea {
@@ -72,6 +74,12 @@ a {
 .home-container {
   text-align: center;
   padding-top: 1rem;
+}
+
+.home-form {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
 }
 
 #search-anime {
